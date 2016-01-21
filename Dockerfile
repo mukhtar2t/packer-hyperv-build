@@ -9,5 +9,7 @@ RUN git clone https://github.com/mitchellh/packer $GOPATH/src/github.com/mitchel
 WORKDIR $GOPATH/src/github.com/mitchellh/packer
 RUN git stash && \
     make updatedeps
+RUN git fetch origin pull/2576/head:hyperv && \
+    git checkout hyperv
 RUN make dev
 CMD ["go","run","main.go"]
